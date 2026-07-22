@@ -1910,25 +1910,24 @@ const stories = [
       article.className =
         "story-card";
 
-      const imageURL =
-        String(story.image || "").trim();
+     const imageURL = String(story.image || "").trim();
+const safeImageURL = imageURL ? encodeURI(imageURL) : "";
 
-      const visualClass =
-        imageURL
-          ? "story-card-visual has-image"
-          : "story-card-visual";
-const visualStyle =
-  imageURL
-    ? `
-      background-image:
-        linear-gradient(
-          135deg,
-          rgba(0, 0, 0, 0.28),
-          rgba(127, 13, 19, 0.72)
-        ),
-        url("${escapeHTML(imageURL)}");
-    `
-    : "";
+const visualClass = imageURL
+  ? "story-card-visual has-image"
+  : "story-card-visual";
+
+const visualStyle = imageURL
+  ? `
+    background-image:
+      linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.28),
+        rgba(127, 13, 19, 0.72)
+      ),
+      url(${safeImageURL});
+  `
+  : "";
 
 article.innerHTML = `
   <div
@@ -1939,8 +1938,7 @@ article.innerHTML = `
       ${escapeHTML(story.category || "Story")}
     </span>
   </div>
-`;
-        <div class="story-card-content">
+`;        <div class="story-card-content">
           <p class="story-card-publication">
             ${escapeHTML(story.publication || "Published work")}
             ·
