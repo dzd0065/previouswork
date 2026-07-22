@@ -1924,17 +1924,11 @@ const stories = [
       : "story-card-visual";
 
   const visualStyle =
-    imageURL
-      ? `
-        background-image:
-          linear-gradient(
-            135deg,
-            rgba(0, 0, 0, 0.12),
-            rgba(0, 0, 0, 0.28)
-          ),
-          url(${safeImageURL});
-      `
-      : "";
+  imageURL
+    ? `
+      background-image: url(${safeImageURL});
+    `
+    : "";
 
   article.innerHTML = `
     <div
