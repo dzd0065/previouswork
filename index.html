@@ -2,20 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Dustin Duncan | Selected Work</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="The professional portfolio and career archive of journalist, communications professional and fiction writer Dustin Duncan."
+  >
+
+  <title>Dustin Duncan | Journalism, Communications and Creative Writing</title>
 
   <style>
     :root {
       --red: #b5121b;
-      --red-dark: #7f0d13;
+      --dark-red: #7f0d13;
       --black: #111111;
-      --charcoal: #242424;
-      --gray: #6d6d6d;
-      --light-gray: #eeeeee;
+      --charcoal: #252525;
+      --dark-gray: #4d4d4d;
+      --gray: #777777;
+      --light-gray: #e5e5e5;
+      --off-white: #f5f3ef;
       --white: #ffffff;
-      --page-width: 1180px;
+      --page-width: 1200px;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
     }
 
     * {
@@ -28,518 +40,1837 @@
 
     body {
       margin: 0;
-      background: #f4f4f4;
+      background: var(--off-white);
       color: var(--black);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 100%;
     }
 
     a {
       color: inherit;
     }
 
-    /* HEADER */
-
-    .site-header {
-      background: var(--black);
-      border-top: 7px solid var(--red);
-      color: var(--white);
+    button,
+    input,
+    select {
+      font: inherit;
     }
 
-    .header-inner {
-      width: min(100% - 40px, var(--page-width));
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--page-width));
       margin: 0 auto;
-      padding: 28px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
     }
 
-    .site-name {
-      margin: 0;
+    .serif {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-
-    .site-name span {
-      color: var(--red);
-    }
-
-    .site-description {
-      margin: 8px 0 0;
-      color: #cfcfcf;
-      font-size: 0.95rem;
-    }
-
-    .main-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 22px;
-    }
-
-    .main-nav a {
-      color: var(--white);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    .main-nav a:hover,
-    .main-nav a:focus {
-      color: #ff5d65;
-    }
-
-    /* INTRODUCTION */
-
-    .intro {
-      background:
-        linear-gradient(
-          135deg,
-          rgba(181, 18, 27, 0.96),
-          rgba(85, 5, 10, 0.98)
-        );
-      color: var(--white);
-    }
-
-    .intro-inner {
-      width: min(100% - 40px, var(--page-width));
-      margin: 0 auto;
-      padding: 70px 0 78px;
     }
 
     .eyebrow {
       margin: 0 0 12px;
-      font-size: 0.8rem;
+      color: var(--red);
+      font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
-    .intro h2 {
-      max-width: 850px;
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.4rem, 6vw, 5.4rem);
-      font-weight: 700;
-      letter-spacing: -0.055em;
-      line-height: 0.98;
+    .section {
+      padding: 88px 0;
     }
 
-    .intro-text {
-      max-width: 760px;
-      margin: 28px 0 0;
-      color: #f4dfe1;
-      font-size: clamp(1rem, 2vw, 1.25rem);
+    .section-dark {
+      background: var(--black);
+      color: var(--white);
     }
 
-    /* MAIN CONTENT */
-
-    main {
-      width: min(100% - 40px, var(--page-width));
-      margin: 0 auto;
-      padding: 64px 0 90px;
+    .section-white {
+      background: var(--white);
     }
 
     .section-heading {
       display: flex;
       align-items: end;
       justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 26px;
-      padding-bottom: 14px;
+      gap: 30px;
+      margin-bottom: 36px;
+      padding-bottom: 18px;
       border-bottom: 4px solid var(--black);
+    }
+
+    .section-dark .section-heading {
+      border-bottom-color: var(--white);
     }
 
     .section-heading h2 {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(2.25rem, 5vw, 4.25rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .section-heading p {
+      max-width: 520px;
+      margin: 0;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    .section-dark .section-heading p {
+      color: #bdbdbd;
+    }
+
+    /* TOP BAR */
+
+    .top-bar {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .top-bar-inner {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .top-bar p {
+      margin: 0;
+    }
+
+    /* HEADER */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(17, 17, 17, 0.97);
+      color: var(--white);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      text-decoration: none;
+    }
+
+    .brand-name {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.5rem, 3vw, 2.15rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .brand-name span {
+      color: #f0434d;
+    }
+
+    .brand-description {
+      display: block;
+      margin-top: 6px;
+      color: #bdbdbd;
+      font-size: 0.72rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .main-nav a {
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus {
+      color: #ff5c65;
+    }
+
+    .menu-button {
+      display: none;
+      width: 46px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid #555555;
+      color: var(--white);
+      font-size: 1.3rem;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          115deg,
+          rgba(0, 0, 0, 0.96) 0%,
+          rgba(0, 0, 0, 0.88) 48%,
+          rgba(125, 7, 14, 0.93) 100%
+        );
+      color: var(--white);
+    }
+
+    .hero::after {
+      position: absolute;
+      top: -140px;
+      right: -120px;
+      width: 540px;
+      height: 540px;
+      border: 90px solid rgba(255, 255, 255, 0.035);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      min-height: 670px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      align-items: center;
+      gap: 65px;
+      padding: 85px 0;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 8px 12px;
+      background: var(--red);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.4rem, 8vw, 7.6rem);
+      line-height: 0.88;
+      letter-spacing: -0.07em;
+    }
+
+    .hero h1 span {
+      color: #ff454f;
+    }
+
+    .hero-intro {
+      max-width: 760px;
+      margin: 30px 0 0;
+      color: #dedede;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 19px;
+      border: 2px solid transparent;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition:
+        background 170ms ease,
+        color 170ms ease,
+        border-color 170ms ease,
+        transform 170ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-red {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .button-red:hover {
+      background: #d21d27;
+    }
+
+    .button-outline {
+      border-color: #6a6a6a;
+      color: var(--white);
+    }
+
+    .button-outline:hover {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--black);
+    }
+
+    .hero-stats {
+      border-top: 6px solid var(--red);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(12px);
+    }
+
+    .stat {
+      padding: 26px 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .stat:last-child {
+      border-bottom: 0;
+    }
+
+    .stat-number {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .stat-label {
+      display: block;
+      margin-top: 8px;
+      color: #cfcfcf;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    /* CAREER AREAS */
+
+    .career-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .career-card {
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      background: var(--white);
+      border-top: 7px solid var(--red);
+      box-shadow: var(--shadow);
+    }
+
+    .career-number {
+      margin-bottom: 50px;
+      color: #d1d1d1;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .career-card h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: -0.035em;
+    }
+
+    .career-card p {
+      margin: 18px 0 0;
+      color: var(--dark-gray);
+    }
+
+    .career-card a {
+      margin-top: auto;
+      padding-top: 25px;
+      color: var(--red);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    /* FEATURED STORY */
+
+    .featured-story {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 0.85fr);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .featured-visual {
+      min-height: 480px;
+      display: flex;
+      align-items: end;
+      padding: 38px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(17, 17, 17, 0.2),
+          rgba(127, 13, 19, 0.9)
+        ),
+        linear-gradient(
+          45deg,
+          #191919,
+          #5d090e
+        );
+      color: var(--white);
+    }
+
+    .featured-visual-label {
+      max-width: 390px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.4rem;
+      font-weight: 700;
       line-height: 1;
       letter-spacing: -0.04em;
     }
 
-    .section-heading p {
-      margin: 0;
-      color: var(--gray);
-      font-size: 0.9rem;
-    }
-
-    /* STORY GRID */
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
-      gap: 28px;
-    }
-
-    /* STORY CARD */
-
-    .story-card {
-      position: relative;
-      overflow: hidden;
-      background: var(--white);
-      border-top: 6px solid var(--red);
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.11);
-      transition:
-        transform 180ms ease,
-        box-shadow 180ms ease;
-    }
-
-    .story-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 22px 44px rgba(0, 0, 0, 0.17);
-    }
-
-    .story-link {
+    .featured-content {
       display: flex;
       flex-direction: column;
-      height: 100%;
-      color: inherit;
-      text-decoration: none;
+      justify-content: center;
+      padding: 55px;
     }
 
-    .story-image-wrapper {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 16 / 9;
+    .story-meta {
+      margin: 0 0 14px;
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .featured-content h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
+
+    .featured-content p {
+      margin: 24px 0 30px;
+      color: var(--dark-gray);
+      font-size: 1.02rem;
+    }
+
+    .story-link-button {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .story-link-button:hover {
+      text-decoration: underline;
+    }
+
+    /* ARCHIVE CONTROLS */
+
+    .archive-toolbar {
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) 210px 210px;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding: 22px;
       background: var(--charcoal);
     }
 
-    .story-image {
-      width: 100%;
-      height: 100%;
+    .form-group label {
       display: block;
-      object-fit: cover;
-      transition: transform 400ms ease;
-    }
-
-    .story-card:hover .story-image {
-      transform: scale(1.035);
-    }
-
-    .story-image-placeholder {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 30px;
-      background:
-        linear-gradient(
-          135deg,
-          var(--black),
-          var(--red-dark)
-        );
-      color: var(--white);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .story-category {
-      position: absolute;
-      left: 18px;
-      bottom: 16px;
-      padding: 7px 11px;
-      background: var(--red);
-      color: var(--white);
+      margin-bottom: 7px;
+      color: #d2d2d2;
       font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
-    .story-content {
+    .form-control {
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 13px;
+      background: var(--white);
+      border: 0;
+      border-radius: 0;
+      color: var(--black);
+      outline: none;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 3px var(--red);
+    }
+
+    .archive-summary {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 20px;
+      color: #c5c5c5;
+      font-size: 0.85rem;
+    }
+
+    .clear-button {
+      padding: 0;
+      background: none;
+      border: 0;
+      color: #ff6a72;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .clear-button:hover {
+      text-decoration: underline;
+    }
+
+    /* STORY CARDS */
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    .story-card {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      color: var(--black);
+      border-top: 6px solid var(--red);
+      box-shadow: 0 13px 32px rgba(0, 0, 0, 0.15);
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 42px rgba(0, 0, 0, 0.23);
+    }
+
+    .story-card-visual {
+      position: relative;
+      min-height: 210px;
+      display: flex;
+      align-items: end;
+      padding: 22px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.18),
+          rgba(127, 13, 19, 0.92)
+        ),
+        linear-gradient(
+          45deg,
+          #171717,
+          #5f090f
+        );
+      color: var(--white);
+    }
+
+    .story-card-visual.has-image {
+      background-position: center;
+      background-size: cover;
+    }
+
+    .story-category {
+      display: inline-block;
+      padding: 7px 10px;
+      background: var(--red);
+      color: var(--white);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .story-card-content {
       flex: 1;
+      display: flex;
       flex-direction: column;
       padding: 25px;
     }
 
-    .story-publication {
+    .story-card-publication {
       margin: 0 0 10px;
       color: var(--red);
-      font-size: 0.76rem;
+      font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.09em;
       text-transform: uppercase;
     }
 
-    .story-title {
+    .story-card h3 {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.45rem, 3vw, 2rem);
-      line-height: 1.12;
-      letter-spacing: -0.025em;
+      font-size: 1.65rem;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
     }
 
-    .story-description {
-      margin: 17px 0 24px;
-      color: #505050;
-      font-size: 0.96rem;
+    .story-card-description {
+      margin: 17px 0 25px;
+      color: var(--dark-gray);
+      font-size: 0.92rem;
     }
 
-    .story-footer {
+    .story-card-footer {
       margin-top: auto;
       padding-top: 18px;
-      border-top: 1px solid #dedede;
+      border-top: 1px solid var(--light-gray);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 16px;
     }
 
-    .story-domain {
-      overflow: hidden;
+    .story-date {
       color: var(--gray);
-      font-size: 0.78rem;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      font-size: 0.76rem;
     }
 
-    .read-story {
-      flex-shrink: 0;
+    .story-card-link {
       color: var(--red);
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.07em;
+      text-decoration: none;
       text-transform: uppercase;
     }
 
-    /* LOADING CARD */
-
-    .loading-card {
-      min-height: 480px;
+    .story-card-link:hover {
+      text-decoration: underline;
     }
 
-    .loading-image {
-      aspect-ratio: 16 / 9;
-      background:
-        linear-gradient(
-          90deg,
-          #d8d8d8 25%,
-          #eeeeee 50%,
-          #d8d8d8 75%
-        );
-      background-size: 200% 100%;
-      animation: loading 1.4s infinite;
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 60px 30px;
+      background: #202020;
+      border: 1px solid #3a3a3a;
+      color: var(--white);
+      text-align: center;
     }
 
-    .loading-content {
-      padding: 25px;
+    .empty-state h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
     }
 
-    .loading-line {
-      height: 14px;
-      margin-bottom: 15px;
-      border-radius: 3px;
-      background:
-        linear-gradient(
-          90deg,
-          #d8d8d8 25%,
-          #eeeeee 50%,
-          #d8d8d8 75%
-        );
-      background-size: 200% 100%;
-      animation: loading 1.4s infinite;
+    .empty-state p {
+      margin: 12px 0 0;
+      color: #bdbdbd;
     }
 
-    .loading-line.short {
-      width: 35%;
+    /* TIMELINE */
+
+    .timeline {
+      position: relative;
+      max-width: 920px;
+      margin: 0 auto;
     }
 
-    .loading-line.medium {
-      width: 70%;
+    .timeline::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 105px;
+      width: 3px;
+      background: var(--red);
+      content: "";
     }
 
-    .loading-line.title {
-      width: 92%;
-      height: 26px;
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 55px;
+      padding-bottom: 50px;
     }
 
-    @keyframes loading {
-      0% {
-        background-position: 200% 0;
-      }
-
-      100% {
-        background-position: -200% 0;
-      }
+    .timeline-item:last-child {
+      padding-bottom: 0;
     }
 
-    /* ERROR MESSAGE */
+    .timeline-year {
+      padding-top: 4px;
+      color: var(--red);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: right;
+    }
 
-    .error-card {
-      padding: 35px;
+    .timeline-content {
+      position: relative;
+      padding: 0 0 0 25px;
+    }
+
+    .timeline-content::before {
+      position: absolute;
+      top: 7px;
+      left: -36px;
+      width: 15px;
+      height: 15px;
       background: var(--white);
-      border-top: 6px solid var(--red);
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.11);
+      border: 4px solid var(--red);
+      border-radius: 50%;
+      content: "";
     }
 
-    .error-card h3 {
-      margin-top: 0;
+    .timeline-content h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      line-height: 1.1;
+    }
+
+    .timeline-content p {
+      margin: 10px 0 0;
+      color: var(--dark-gray);
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(270px, 0.75fr);
+      gap: 70px;
+      align-items: start;
+    }
+
+    .about-copy p {
+      margin: 0 0 22px;
+      color: #3f3f3f;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.16rem;
+    }
+
+    .about-copy p:first-of-type::first-letter {
+      float: left;
+      margin: 8px 8px 0 0;
+      color: var(--red);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 0.7;
+    }
+
+    .about-panel {
+      padding: 30px;
+      background: var(--black);
+      color: var(--white);
+      border-top: 7px solid var(--red);
+    }
+
+    .about-panel h3 {
+      margin: 0 0 20px;
       font-family: Georgia, "Times New Roman", serif;
       font-size: 1.8rem;
     }
 
-    .error-card p {
-      margin-bottom: 0;
-      color: var(--gray);
+    .about-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .about-list li {
+      padding: 13px 0;
+      border-bottom: 1px solid #3a3a3a;
+      color: #d5d5d5;
+    }
+
+    .about-list li:last-child {
+      border-bottom: 0;
+    }
+
+    /* FICTION */
+
+    .fiction-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .fiction-card {
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      padding: 36px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(181, 18, 27, 0.93),
+          rgba(42, 4, 7, 0.98)
+        );
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .fiction-card:nth-child(even) {
+      background:
+        linear-gradient(
+          145deg,
+          #1a1a1a,
+          #4c4c4c
+        );
+    }
+
+    .fiction-status {
+      margin: 0 0 60px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .fiction-card h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.4rem;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .fiction-card p {
+      margin: 18px 0 0;
+      color: #efefef;
+    }
+
+    .fiction-card span {
+      margin-top: auto;
+      padding-top: 30px;
+      color: #f4b8bc;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* CONTACT */
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(270px, 0.75fr);
+      gap: 60px;
+      padding: 60px;
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .contact-panel h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.8rem, 6vw, 5.4rem);
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+    }
+
+    .contact-panel p {
+      max-width: 650px;
+      margin: 26px 0 0;
+      color: #f7d7d9;
+      font-size: 1.05rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .contact-link {
+      display: block;
+      padding: 15px 18px;
+      background: rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .contact-link:hover {
+      background: var(--black);
     }
 
     /* FOOTER */
 
     .site-footer {
       background: var(--black);
-      color: #bfbfbf;
+      color: #a9a9a9;
     }
 
     .footer-inner {
-      width: min(100% - 40px, var(--page-width));
-      margin: 0 auto;
-      padding: 30px 0;
+      min-height: 105px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      font-size: 0.85rem;
+      gap: 25px;
+      font-size: 0.8rem;
     }
 
     .footer-inner p {
       margin: 0;
     }
 
+    .back-to-top {
+      color: var(--white);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 960px) {
+      .hero-inner {
+        min-height: auto;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .stat {
+        border-right: 1px solid rgba(255, 255, 255, 0.12);
+        border-bottom: 0;
+      }
+
+      .stat:last-child {
+        border-right: 0;
+      }
+
+      .career-grid,
+      .story-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .featured-story,
+      .about-grid,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-visual {
+        min-height: 360px;
+      }
+
+      .archive-toolbar {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .archive-toolbar .form-group:first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
     /* MOBILE */
 
-    @media (max-width: 760px) {
-      .header-inner,
-      .section-heading,
-      .footer-inner {
+    @media (max-width: 720px) {
+      .section {
+        padding: 64px 0;
+      }
+
+      .top-bar-inner {
+        min-height: 34px;
+      }
+
+      .top-bar-inner p:last-child {
+        display: none;
+      }
+
+      .header-inner {
+        min-height: 74px;
+      }
+
+      .brand-description {
+        display: none;
+      }
+
+      .menu-button {
+        display: inline-flex;
+      }
+
+      .main-nav {
+        position: fixed;
+        top: 108px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 30px 20px;
+        background: var(--black);
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .main-nav a {
+        padding: 17px 5px;
+        border-bottom: 1px solid #333333;
+        font-size: 0.9rem;
+      }
+
+      .hero-inner {
+        gap: 45px;
+        padding: 70px 0;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.5rem, 17vw, 5.8rem);
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .stat:last-child {
+        border-bottom: 0;
+      }
+
+      .section-heading {
         align-items: flex-start;
         flex-direction: column;
       }
 
-      .intro-inner {
-        padding: 54px 0 60px;
-      }
-
-      main {
-        padding-top: 46px;
-      }
-
-      .main-nav {
-        gap: 15px;
-      }
-
       .section-heading p {
-        max-width: 420px;
+        text-align: left;
+      }
+
+      .career-grid,
+      .story-grid,
+      .fiction-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-content {
+        padding: 34px 27px;
+      }
+
+      .archive-toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .archive-toolbar .form-group:first-child {
+        grid-column: auto;
+      }
+
+      .archive-summary {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .timeline::before {
+        left: 9px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding-left: 38px;
+      }
+
+      .timeline-year {
+        text-align: left;
+      }
+
+      .timeline-content {
+        padding-left: 0;
+      }
+
+      .timeline-content::before {
+        top: -31px;
+        left: -36px;
+      }
+
+      .contact-panel {
+        padding: 38px 27px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 28px 0;
       }
     }
   </style>
 </head>
 
-<body>
+<body id="top">
+
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <p>Career archive and selected work</p>
+      <p>Reporting and storytelling since 2013</p>
+    </div>
+  </div>
 
   <header class="site-header">
-    <div class="header-inner">
-      <div>
-        <h1 class="site-name">Dustin <span>Duncan</span></h1>
-        <p class="site-description">
-          Journalist, communications professional and fiction writer
-        </p>
-      </div>
+    <div class="container header-inner">
 
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a href="#work">Selected Work</a>
+      <a class="brand" href="#top">
+        <span class="brand-name">
+          Dustin <span>Duncan</span>
+        </span>
+
+        <span class="brand-description">
+          Journalism · Communications · Creative Writing
+        </span>
+      </a>
+
+      <button
+        class="menu-button"
+        id="menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="main-nav"
+        aria-label="Open navigation menu"
+      >
+        ☰
+      </button>
+
+      <nav
+        class="main-nav"
+        id="main-nav"
+        aria-label="Primary navigation"
+      >
+        <a href="#work">Work</a>
+        <a href="#archive">Archive</a>
+        <a href="#career">Career</a>
         <a href="#about">About</a>
+        <a href="#fiction">Fiction</a>
         <a href="#contact">Contact</a>
       </nav>
+
     </div>
   </header>
 
-  <section class="intro">
-    <div class="intro-inner">
-      <p class="eyebrow">Reporting and storytelling since 2013</p>
+  <main>
 
-      <h2>Stories about people, places and the work that matters.</h2>
+    <!-- HERO -->
 
-      <p class="intro-text">
-        Selected journalism and communications work from more than a decade
-        covering communities, institutions, research, engineering and the
-        people behind the news.
-      </p>
-    </div>
-  </section>
+    <section class="hero">
+      <div class="container hero-inner">
 
-  <main id="work">
-    <div class="section-heading">
-      <h2>From the archive</h2>
-      <p>Selected newspaper reporting</p>
-    </div>
+        <div>
+          <span class="hero-kicker">
+            Journalist and professional storyteller
+          </span>
 
-    <div class="story-grid" id="story-grid">
-      <!-- Story cards will be generated here automatically. -->
-    </div>
+          <h1>
+            Stories about people, places and <span>purpose.</span>
+          </h1>
+
+          <p class="hero-intro">
+            More than a decade of newspaper reporting, university
+            communications and creative writing—covering communities,
+            institutions, engineering, research and the people behind
+            the news.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-red" href="#archive">
+              Explore the archive
+            </a>
+
+            <a class="button button-outline" href="#about">
+              About Dustin
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-stats" aria-label="Career statistics">
+          <div class="stat">
+            <span class="stat-number">2,000+</span>
+            <span class="stat-label">Published stories</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-number">13+</span>
+            <span class="stat-label">Years telling stories</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-number">3</span>
+            <span class="stat-label">States covered professionally</span>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- AREAS OF WORK -->
+
+    <section class="section section-white" id="work">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">A career in storytelling</p>
+            <h2>Selected work</h2>
+          </div>
+
+          <p>
+            Journalism, institutional communications and fiction connected
+            by a commitment to clarity, detail and human stories.
+          </p>
+        </div>
+
+        <div class="career-grid">
+
+          <article class="career-card">
+            <span class="career-number">01</span>
+
+            <h3>Journalism</h3>
+
+            <p>
+              Daily reporting from southern Illinois, Alabama and Georgia,
+              including community news, government, education, enterprise
+              reporting and human-interest stories.
+            </p>
+
+            <a href="#archive">
+              Browse journalism →
+            </a>
+          </article>
+
+          <article class="career-card">
+            <span class="career-number">02</span>
+
+            <h3>Auburn Communications</h3>
+
+            <p>
+              Research, faculty, student and institutional storytelling for
+              Auburn University, including more than 1,000 published stories
+              across multiple communications roles.
+            </p>
+
+            <a href="#archive">
+              Browse communications work →
+            </a>
+          </article>
+
+          <article class="career-card">
+            <span class="career-number">03</span>
+
+            <h3>Creative Writing</h3>
+
+            <p>
+              Novels, short fiction and narrative projects centered on
+              complicated people, strained relationships and the choices
+              that reshape their lives.
+            </p>
+
+            <a href="#fiction">
+              View creative projects →
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED -->
+
+    <section class="section" id="featured">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">From the early archive</p>
+            <h2>Featured story</h2>
+          </div>
+
+          <p>
+            One story from the beginning of a reporting career that would
+            eventually span thousands of assignments.
+          </p>
+        </div>
+
+        <article class="featured-story">
+
+          <div class="featured-visual">
+            <div class="featured-visual-label">
+              Community reporting from southern Illinois
+            </div>
+          </div>
+
+          <div class="featured-content">
+            <p class="story-meta">
+              The Southern Illinoisan · July 2013
+            </p>
+
+            <h3>
+              Pi Kappa Phi members work on improvements at Touch of Nature
+            </h3>
+
+            <p>
+              Fraternity members contributed volunteer labor to improvement
+              projects at Touch of Nature Environmental Center, supporting
+              the facility and the people it serves.
+            </p>
+
+            <a
+              class="story-link-button"
+              href="https://thesouthern.com/news/local/pi-kappa-phi-members-work-on-improvements-at-touch-of-nature/article_44dd3ade-f351-11e2-8bc8-001a4bcf887a.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read the original story →
+            </a>
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ARCHIVE -->
+
+    <section class="section section-dark" id="archive">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Searchable career index</p>
+            <h2>Story archive</h2>
+          </div>
+
+          <p>
+            Search by headline or description and filter by publication
+            and category.
+          </p>
+        </div>
+
+        <div class="archive-toolbar">
+
+          <div class="form-group">
+            <label for="story-search">Search stories</label>
+
+            <input
+              class="form-control"
+              id="story-search"
+              type="search"
+              placeholder="Search by title, topic or keyword"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="publication-filter">Publication</label>
+
+            <select
+              class="form-control"
+              id="publication-filter"
+            >
+              <option value="all">All publications</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="category-filter">Category</label>
+
+            <select
+              class="form-control"
+              id="category-filter"
+            >
+              <option value="all">All categories</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="archive-summary">
+          <span id="result-count">
+            Showing 0 stories
+          </span>
+
+          <button
+            class="clear-button"
+            id="clear-filters"
+            type="button"
+          >
+            Clear search and filters
+          </button>
+        </div>
+
+        <div
+          class="story-grid"
+          id="story-grid"
+          aria-live="polite"
+        >
+          <!-- Story cards are generated automatically. -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CAREER TIMELINE -->
+
+    <section class="section section-white" id="career">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Professional path</p>
+            <h2>Career timeline</h2>
+          </div>
+
+          <p>
+            A reporting and communications career spanning community
+            newspapers, higher education and technical storytelling.
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <article class="timeline-item">
+            <div class="timeline-year">2013</div>
+
+            <div class="timeline-content">
+              <h3>Daily newspaper reporting begins</h3>
+
+              <p>
+                Began a professional journalism career in southern Illinois,
+                reporting on local communities, government, education,
+                public institutions and the people shaping the region.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-year">Later</div>
+
+            <div class="timeline-content">
+              <h3>Reporting across Alabama and Georgia</h3>
+
+              <p>
+                Continued covering local news and community life through
+                newspaper reporting positions in Alabama and Georgia.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-year">Auburn</div>
+
+            <div class="timeline-content">
+              <h3>University communications and marketing</h3>
+
+              <p>
+                Transitioned into higher education communications at Auburn
+                University, producing stories about faculty, students,
+                research, engineering, innovation and institutional impact.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-year">Today</div>
+
+            <div class="timeline-content">
+              <h3>Communications, editorial strategy and creative work</h3>
+
+              <p>
+                Continues managing complex editorial projects while developing
+                fiction and maintaining a career archive that reflects more
+                than a decade of professional storytelling.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="section" id="about">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">The person behind the byline</p>
+            <h2>About Dustin</h2>
+          </div>
+
+          <p>
+            A journalist’s foundation applied to communications, technical
+            subjects and long-form creative storytelling.
+          </p>
+        </div>
+
+        <div class="about-grid">
+
+          <div class="about-copy">
+            <p>
+              Dustin Duncan is a journalist, communications professional and
+              fiction writer whose career has been built around finding the
+              human meaning inside complicated subjects.
+            </p>
+
+            <p>
+              He spent more than five years as a daily newspaper reporter in
+              southern Illinois before continuing his journalism career in
+              Alabama and Georgia. His reporting covered the institutions,
+              decisions and individuals that shaped the communities he served.
+            </p>
+
+            <p>
+              He later moved into higher education communications and
+              marketing at Auburn University, where he has produced more than
+              1,000 stories about engineering, research, faculty expertise,
+              student achievement and institutional impact.
+            </p>
+
+            <p>
+              Whether reporting from a city meeting, interviewing an
+              engineering researcher or developing a fictional character,
+              his approach remains the same: listen closely, understand the
+              details and tell the story clearly.
+            </p>
+          </div>
+
+          <aside class="about-panel">
+            <h3>Areas of experience</h3>
+
+            <ul class="about-list">
+              <li>Daily newspaper reporting</li>
+              <li>Higher education communications</li>
+              <li>Engineering and research writing</li>
+              <li>Editorial strategy and web content</li>
+              <li>Feature and enterprise storytelling</li>
+              <li>Creative and long-form fiction</li>
+            </ul>
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FICTION -->
+
+    <section class="section section-white" id="fiction">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Beyond the newsroom</p>
+            <h2>Creative writing</h2>
+          </div>
+
+          <p>
+            Fiction projects will eventually include descriptions, excerpts
+            and updates as the work develops.
+          </p>
+        </div>
+
+        <div class="fiction-grid">
+
+          <article class="fiction-card">
+            <p class="fiction-status">Novel in progress</p>
+
+            <h3>Current manuscript</h3>
+
+            <p>
+              A character-driven novel about damaged relationships,
+              responsibility, resentment and the consequences of choices
+              that cannot be undone.
+            </p>
+
+            <span>Project details coming later</span>
+          </article>
+
+          <article class="fiction-card">
+            <p class="fiction-status">Short fiction and other work</p>
+
+            <h3>Selected creative projects</h3>
+
+            <p>
+              A future home for short stories, excerpts and additional
+              narrative work developed outside professional communications.
+            </p>
+
+            <span>Archive under development</span>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section class="section" id="contact">
+      <div class="container">
+
+        <div class="contact-panel">
+
+          <div>
+            <h2>Let’s tell a good story.</h2>
+
+            <p>
+              This section can eventually connect visitors to your email,
+              LinkedIn profile, résumé and other professional information.
+              Replace the placeholder links when you are ready.
+            </p>
+          </div>
+
+          <div class="contact-links">
+
+            <!--
+              Replace the email address below with your real email.
+            -->
+
+            <a
+              class="contact-link"
+              href="mailto:your-email@example.com"
+            >
+              Email Dustin
+            </a>
+
+            <!--
+              Replace # with your actual LinkedIn URL.
+            -->
+
+            <a
+              class="contact-link"
+              href="#"
+            >
+              LinkedIn
+            </a>
+
+            <!--
+              Later, upload your resume PDF and change # to:
+              resume.pdf
+            -->
+
+            <a
+              class="contact-link"
+              href="#"
+            >
+              Download résumé
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <p>&copy; <span id="current-year"></span> Dustin Duncan</p>
-      <p>Journalism · Communications · Creative Writing</p>
+    <div class="container footer-inner">
+
+      <p>
+        &copy; <span id="current-year"></span> Dustin Duncan.
+        Journalism, communications and creative writing.
+      </p>
+
+      <a class="back-to-top" href="#top">
+        Back to top ↑
+      </a>
+
     </div>
   </footer>
 
   <script>
     /*
       ============================================================
-      ADD YOUR STORY LINKS HERE
+      YOUR STORY ARCHIVE
       ============================================================
 
       To add another story:
 
-      1. Copy one of the existing objects.
-      2. Paste it beneath the previous one.
-      3. Replace the URL.
-      4. Add a comma between objects.
+      1. Copy an entire story block.
+      2. Paste it after the previous block.
+      3. Add a comma between the story blocks.
+      4. Replace the information with the new story.
 
-      Example:
+      The image field may stay blank:
 
-      {
-        url: "https://example.com/my-story"
-      },
+      image: ""
 
-      The category is optional. If you leave it out, the card will
-      display "Journalism."
+      The website will use the red-and-black placeholder design.
     */
 
     const stories = [
       {
-        url: "https://thesouthern.com/news/local/pi-kappa-phi-members-work-on-improvements-at-touch-of-nature/article_44dd3ade-f351-11e2-8bc8-001a4bcf887a.html",
-        category: "Community"
+        title:
+          "Pi Kappa Phi members work on improvements at Touch of Nature",
+
+        publication:
+          "The Southern Illinoisan",
+
+        date:
+          "July 23, 2013",
+
+        year:
+          "2013",
+
+        category:
+          "Community",
+
+        type:
+          "Journalism",
+
+        description:
+          "Fraternity members contributed volunteer labor to improvement projects at Touch of Nature Environmental Center in southern Illinois.",
+
+        link:
+          "https://thesouthern.com/news/local/pi-kappa-phi-members-work-on-improvements-at-touch-of-nature/article_44dd3ade-f351-11e2-8bc8-001a4bcf887a.html",
+
+        image:
+          ""
       }
 
       /*
-      ADD THE NEXT STORY LIKE THIS:
+        ADD ANOTHER STORY LIKE THIS:
 
-      ,
-      {
-        url: "PASTE-YOUR-NEXT-STORY-LINK-HERE",
-        category: "News"
-      }
+        ,
+        {
+          title:
+            "Your story headline",
+
+          publication:
+            "Publication name",
+
+          date:
+            "Month Day, Year",
+
+          year:
+            "2026",
+
+          category:
+            "Research",
+
+          type:
+            "Communications",
+
+          description:
+            "A brief one- or two-sentence description of the story.",
+
+          link:
+            "https://www.example.com/story-link",
+
+          image:
+            ""
+        }
       */
     ];
 
     /*
       ============================================================
-      YOU DO NOT NEED TO EDIT ANYTHING BELOW THIS LINE
+      THE WEBSITE CODE BELOW BUILDS AND FILTERS THE CARDS
       ============================================================
+
+      You should not need to edit anything below this line.
     */
 
-    const storyGrid = document.getElementById("story-grid");
+    const storyGrid =
+      document.getElementById("story-grid");
+
+    const searchInput =
+      document.getElementById("story-search");
+
+    const publicationFilter =
+      document.getElementById("publication-filter");
+
+    const categoryFilter =
+      document.getElementById("category-filter");
+
+    const resultCount =
+      document.getElementById("result-count");
+
+    const clearFiltersButton =
+      document.getElementById("clear-filters");
+
+    const menuButton =
+      document.getElementById("menu-button");
+
+    const mainNav =
+      document.getElementById("main-nav");
 
     document.getElementById("current-year").textContent =
       new Date().getFullYear();
@@ -553,225 +1884,304 @@
         .replaceAll("'", "&#039;");
     }
 
-    function getDomain(url) {
-      try {
-        return new URL(url).hostname.replace(/^www\./, "");
-      } catch {
-        return "Original publication";
-      }
+    function normalizeValue(value = "") {
+      return String(value)
+        .trim()
+        .toLowerCase();
     }
 
-    function makePublicationName(domain) {
-      const publicationNames = {
-        "thesouthern.com": "The Southern Illinoisan",
-        "eng.auburn.edu": "Auburn Engineering",
-        "auburn.edu": "Auburn University"
-      };
+    function createOption(value) {
+      const option =
+        document.createElement("option");
 
-      return publicationNames[domain] || domain;
+      option.value = value;
+      option.textContent = value;
+
+      return option;
     }
 
-    function createLoadingCard() {
-      const loadingCard = document.createElement("article");
+    function populateFilters() {
+      const publications = [
+        ...new Set(
+          stories
+            .map((story) => story.publication)
+            .filter(Boolean)
+        )
+      ].sort();
 
-      loadingCard.className = "story-card loading-card";
+      const categories = [
+        ...new Set(
+          stories
+            .map((story) => story.category)
+            .filter(Boolean)
+        )
+      ].sort();
 
-      loadingCard.innerHTML = `
-        <div class="loading-image"></div>
+      publications.forEach((publication) => {
+        publicationFilter.appendChild(
+          createOption(publication)
+        );
+      });
 
-        <div class="loading-content">
-          <div class="loading-line short"></div>
-          <div class="loading-line title"></div>
-          <div class="loading-line medium"></div>
-          <div class="loading-line"></div>
-          <div class="loading-line medium"></div>
+      categories.forEach((category) => {
+        categoryFilter.appendChild(
+          createOption(category)
+        );
+      });
+    }
+
+    function createStoryCard(story) {
+      const article =
+        document.createElement("article");
+
+      article.className =
+        "story-card";
+
+      const imageURL =
+        String(story.image || "").trim();
+
+      const visualClass =
+        imageURL
+          ? "story-card-visual has-image"
+          : "story-card-visual";
+
+      const visualStyle =
+        imageURL
+          ? `
+            background-image:
+              linear-gradient(
+                135deg,
+                rgba(0, 0, 0, 0.28),
+                rgba(127, 13, 19, 0.72)
+              ),
+              url("${escapeHTML(imageURL)}");
+          `
+          : "";
+
+      article.innerHTML = `
+        <div
+          class="${visualClass}"
+          style="${visualStyle}"
+        >
+          <span class="story-category">
+            ${escapeHTML(story.category || "Story")}
+          </span>
+        </div>
+
+        <div class="story-card-content">
+          <p class="story-card-publication">
+            ${escapeHTML(story.publication || "Published work")}
+            ·
+            ${escapeHTML(story.type || "Story")}
+          </p>
+
+          <h3>
+            ${escapeHTML(story.title || "Untitled story")}
+          </h3>
+
+          <p class="story-card-description">
+            ${escapeHTML(
+              story.description ||
+              "View this story in its original publication."
+            )}
+          </p>
+
+          <div class="story-card-footer">
+            <span class="story-date">
+              ${escapeHTML(story.date || story.year || "")}
+            </span>
+
+            <a
+              class="story-card-link"
+              href="${escapeHTML(story.link || "#")}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read story →
+            </a>
+          </div>
         </div>
       `;
 
-      return loadingCard;
+      return article;
     }
 
-    async function getStoryMetadata(url) {
-      const apiURL =
-        "https://api.microlink.io/?url=" +
-        encodeURIComponent(url) +
-        "&headers.userAgent=googlebot";
-
-      const response = await fetch(apiURL);
-
-      if (!response.ok) {
-        throw new Error(`Metadata request failed: ${response.status}`);
+    function storyMatchesSearch(story, searchTerm) {
+      if (!searchTerm) {
+        return true;
       }
 
-      const result = await response.json();
+      const searchableText = [
+        story.title,
+        story.publication,
+        story.date,
+        story.year,
+        story.category,
+        story.type,
+        story.description
+      ]
+        .join(" ")
+        .toLowerCase();
 
-      if (result.status !== "success" || !result.data) {
-        throw new Error("No metadata was returned.");
-      }
-
-      return result.data;
+      return searchableText.includes(searchTerm);
     }
 
-    function createStoryCard(story, metadata) {
-      const article = document.createElement("article");
+    function renderStories() {
+      const searchTerm =
+        normalizeValue(searchInput.value);
 
-      article.className = "story-card";
+      const selectedPublication =
+        publicationFilter.value;
 
-      const domain = getDomain(story.url);
+      const selectedCategory =
+        categoryFilter.value;
 
-      const title =
-        metadata.title ||
-        story.title ||
-        "Read the original story";
+      const filteredStories =
+        stories.filter((story) => {
+          const matchesSearch =
+            storyMatchesSearch(
+              story,
+              searchTerm
+            );
 
-      const description =
-        metadata.description ||
-        story.description ||
-        "View this story in its original publication.";
+          const matchesPublication =
+            selectedPublication === "all" ||
+            story.publication === selectedPublication;
 
-      const publication =
-        story.publication ||
-        metadata.publisher ||
-        makePublicationName(domain);
+          const matchesCategory =
+            selectedCategory === "all" ||
+            story.category === selectedCategory;
 
-      const imageURL =
-        metadata.image?.url ||
-        story.image ||
+          return (
+            matchesSearch &&
+            matchesPublication &&
+            matchesCategory
+          );
+        });
+
+      storyGrid.innerHTML = "";
+
+      if (!filteredStories.length) {
+        storyGrid.innerHTML = `
+          <div class="empty-state">
+            <h3>No stories found.</h3>
+
+            <p>
+              Try another keyword or clear the filters.
+            </p>
+          </div>
+        `;
+      } else {
+        filteredStories.forEach((story) => {
+          storyGrid.appendChild(
+            createStoryCard(story)
+          );
+        });
+      }
+
+      const storyWord =
+        filteredStories.length === 1
+          ? "story"
+          : "stories";
+
+      resultCount.textContent =
+        `Showing ${filteredStories.length} ${storyWord}`;
+    }
+
+    function clearFilters() {
+      searchInput.value =
         "";
 
-      const category =
-        story.category ||
-        "Journalism";
+      publicationFilter.value =
+        "all";
 
-      const imageMarkup = imageURL
-        ? `
-          <img
-            class="story-image"
-            src="${escapeHTML(imageURL)}"
-            alt=""
-            loading="lazy"
-            onerror="
-              this.outerHTML =
-              '<div class=&quot;story-image-placeholder&quot;>From the archive</div>'
-            "
-          >
-        `
-        : `
-          <div class="story-image-placeholder">
-            From the archive
-          </div>
-        `;
+      categoryFilter.value =
+        "all";
 
-      article.innerHTML = `
-        <a
-          class="story-link"
-          href="${escapeHTML(story.url)}"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Read ${escapeHTML(title)}"
-        >
-          <div class="story-image-wrapper">
-            ${imageMarkup}
+      renderStories();
 
-            <span class="story-category">
-              ${escapeHTML(category)}
-            </span>
-          </div>
-
-          <div class="story-content">
-            <p class="story-publication">
-              ${escapeHTML(publication)}
-            </p>
-
-            <h3 class="story-title">
-              ${escapeHTML(title)}
-            </h3>
-
-            <p class="story-description">
-              ${escapeHTML(description)}
-            </p>
-
-            <div class="story-footer">
-              <span class="story-domain">
-                ${escapeHTML(domain)}
-              </span>
-
-              <span class="read-story">
-                Read story &rarr;
-              </span>
-            </div>
-          </div>
-        </a>
-      `;
-
-      return article;
+      searchInput.focus();
     }
 
-    function createErrorCard(story) {
-      const article = document.createElement("article");
+    function closeMobileMenu() {
+      mainNav.classList.remove("open");
 
-      article.className = "error-card";
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
 
-      const domain = getDomain(story.url);
+      menuButton.textContent =
+        "☰";
 
-      article.innerHTML = `
-        <h3>
-          ${escapeHTML(story.title || "Archived story")}
-        </h3>
-
-        <p>
-          The automatic preview could not be loaded, but the original
-          story is still available at
-          <a
-            href="${escapeHTML(story.url)}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            ${escapeHTML(domain)}
-          </a>.
-        </p>
-      `;
-
-      return article;
+      document.body.classList.remove(
+        "menu-open"
+      );
     }
 
-    async function loadStory(story) {
-      const loadingCard = createLoadingCard();
+    function toggleMobileMenu() {
+      const isOpen =
+        mainNav.classList.toggle("open");
 
-      storyGrid.appendChild(loadingCard);
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
 
-      try {
-        const metadata = await getStoryMetadata(story.url);
-        const storyCard = createStoryCard(story, metadata);
+      menuButton.textContent =
+        isOpen ? "✕" : "☰";
 
-        loadingCard.replaceWith(storyCard);
-      } catch (error) {
-        console.error("Could not create story preview:", error);
+      document.body.classList.toggle(
+        "menu-open",
+        isOpen
+      );
+    }
 
-        const errorCard = createErrorCard(story);
+    searchInput.addEventListener(
+      "input",
+      renderStories
+    );
 
-        loadingCard.replaceWith(errorCard);
+    publicationFilter.addEventListener(
+      "change",
+      renderStories
+    );
+
+    categoryFilter.addEventListener(
+      "change",
+      renderStories
+    );
+
+    clearFiltersButton.addEventListener(
+      "click",
+      clearFilters
+    );
+
+    menuButton.addEventListener(
+      "click",
+      toggleMobileMenu
+    );
+
+    mainNav
+      .querySelectorAll("a")
+      .forEach((link) => {
+        link.addEventListener(
+          "click",
+          closeMobileMenu
+        );
+      });
+
+    window.addEventListener(
+      "resize",
+      () => {
+        if (window.innerWidth > 720) {
+          closeMobileMenu();
+        }
       }
-    }
+    );
 
-    async function loadStories() {
-      if (!stories.length) {
-        storyGrid.innerHTML = `
-          <article class="error-card">
-            <h3>No stories have been added yet.</h3>
-            <p>Add a URL to the stories list in the JavaScript.</p>
-          </article>
-        `;
-
-        return;
-      }
-
-      for (const story of stories) {
-        await loadStory(story);
-      }
-    }
-
-    loadStories();
+    populateFilters();
+    renderStories();
   </script>
 
 </body>
