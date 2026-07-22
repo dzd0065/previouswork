@@ -1903,79 +1903,86 @@ const stories = [
       });
     }
 
-    function createStoryCard(story) {
-      const article =
-        document.createElement("article");
+  function createStoryCard(story) {
+  const article =
+    document.createElement("article");
 
-      article.className =
-        "story-card";
+  article.className =
+    "story-card";
 
-     const imageURL = String(story.image || "").trim();
-const safeImageURL = imageURL ? encodeURI(imageURL) : "";
+  const imageURL =
+    String(story.image || "").trim();
 
-const visualClass = imageURL
-  ? "story-card-visual has-image"
-  : "story-card-visual";
+  const safeImageURL =
+    imageURL
+      ? encodeURI(imageURL)
+      : "";
 
-const visualStyle = imageURL
-  ? `
-    background-image:
-      linear-gradient(
-        135deg,
-        rgba(0, 0, 0, 0.28),
-        rgba(127, 13, 19, 0.72)
-      ),
-      url(${safeImageURL});
-  `
-  : "";
+  const visualClass =
+    imageURL
+      ? "story-card-visual has-image"
+      : "story-card-visual";
 
-article.innerHTML = `
-  <div
-    class="${visualClass}"
-    style="${visualStyle}"
-  >
-    <span class="story-category">
-      ${escapeHTML(story.category || "Story")}
-    </span>
-  </div>
+  const visualStyle =
+    imageURL
+      ? `
+        background-image:
+          linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.12),
+            rgba(0, 0, 0, 0.28)
+          ),
+          url(${safeImageURL});
+      `
+      : "";
 
-  <div class="story-card-content">
-    <p class="story-card-publication">
-      ${escapeHTML(story.publication || "Published work")}
-      ·
-      ${escapeHTML(story.type || "Story")}
-    </p>
-
-    <h3>
-      ${escapeHTML(story.title || "Untitled story")}
-    </h3>
-
-    <p class="story-card-description">
-      ${escapeHTML(
-        story.description ||
-        "View this story in its original publication."
-      )}
-    </p>
-
-    <div class="story-card-footer">
-      <span class="story-date">
-        ${escapeHTML(story.date || story.year || "")}
+  article.innerHTML = `
+    <div
+      class="${visualClass}"
+      style="${visualStyle}"
+    >
+      <span class="story-category">
+        ${escapeHTML(story.category || "Story")}
       </span>
-
-      <a
-        class="story-card-link"
-        href="${escapeHTML(story.link || "#")}"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Read story →
-      </a>
     </div>
-  </div>
-`;
 
-      return article;
-    }
+    <div class="story-card-content">
+      <p class="story-card-publication">
+        ${escapeHTML(story.publication || "Published work")}
+        ·
+        ${escapeHTML(story.type || "Story")}
+      </p>
+
+      <h3>
+        ${escapeHTML(story.title || "Untitled story")}
+      </h3>
+
+      <p class="story-card-description">
+        ${escapeHTML(
+          story.description ||
+          "View this story in its original publication."
+        )}
+      </p>
+
+      <div class="story-card-footer">
+        <span class="story-date">
+          ${escapeHTML(story.date || story.year || "")}
+        </span>
+
+        <a
+          class="story-card-link"
+          href="${escapeHTML(story.link || "#")}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Read story →
+        </a>
+      </div>
+    </div>
+  `;
+
+  return article;
+}
 
     function storyMatchesSearch(story, searchTerm) {
       if (!searchTerm) {
