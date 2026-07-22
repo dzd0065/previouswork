@@ -1918,9 +1918,6 @@ const stories = [
     const clearFiltersButton =
       document.getElementById("clear-filters");
 
-    const clearFiltersButton =
-  document.getElementById("clear-filters");
-
 const previousStoriesButton =
   document.getElementById("previous-stories");
 
@@ -1939,8 +1936,6 @@ let currentStoryPage = 1;
 
 const menuButton =
   document.getElementById("menu-button");
-    const menuButton =
-      document.getElementById("menu-button");
 
     const mainNav =
       document.getElementById("main-nav");
@@ -2202,20 +2197,20 @@ const menuButton =
     currentStoryPage === totalPages;
 }
 
-    function clearFilters() {
-      searchInput.value =
-        "";
+function clearFilters() {
 
-      publicationFilter.value =
-        "all";
+  currentStoryPage = 1;
 
-      categoryFilter.value =
-        "all";
+  searchInput.value = "";
 
-      renderStories();
+  publicationFilter.value = "all";
 
-      searchInput.focus();
-    }
+  categoryFilter.value = "all";
+
+  renderStories();
+
+  searchInput.focus();
+}
 
     function closeMobileMenu() {
       mainNav.classList.remove("open");
@@ -2293,8 +2288,10 @@ categoryFilter.addEventListener(
 nextStoriesButton.addEventListener(
   "click",
   () => {
-    currentStoryPage += 1;
-    renderStories();
+    if (currentStoryPage < Math.ceil(stories.length / STORIES_PER_PAGE)) {
+      currentStoryPage += 1;
+      renderStories();
+    }
   }
 );
     menuButton.addEventListener(
