@@ -721,7 +721,44 @@
       margin: 12px 0 0;
       color: #bdbdbd;
     }
+.story-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 32px;
+}
 
+.story-page-button {
+  min-width: 115px;
+  padding: 11px 16px;
+  background: transparent;
+  border: 1px solid #777777;
+  color: var(--white);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.story-page-button:hover:not(:disabled) {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--black);
+}
+
+.story-page-button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+#story-page-status {
+  min-width: 95px;
+  color: #c5c5c5;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+}
     /* TIMELINE */
 
     .timeline {
@@ -1486,7 +1523,30 @@
         >
           <!-- Story cards are generated automatically. -->
         </div>
+<div
+  class="story-pagination"
+  id="story-pagination"
+>
+  <button
+    class="story-page-button"
+    id="previous-stories"
+    type="button"
+  >
+    ← Previous
+  </button>
 
+  <span id="story-page-status">
+    Page 1 of 1
+  </span>
+
+  <button
+    class="story-page-button"
+    id="next-stories"
+    type="button"
+  >
+    Next →
+  </button>
+</div>
       </div>
     </section>
 
@@ -1858,6 +1918,27 @@ const stories = [
     const clearFiltersButton =
       document.getElementById("clear-filters");
 
+    const clearFiltersButton =
+  document.getElementById("clear-filters");
+
+const previousStoriesButton =
+  document.getElementById("previous-stories");
+
+const nextStoriesButton =
+  document.getElementById("next-stories");
+
+const storyPageStatus =
+  document.getElementById("story-page-status");
+
+const storyPagination =
+  document.getElementById("story-pagination");
+
+const STORIES_PER_PAGE = 3;
+
+let currentStoryPage = 1;
+
+const menuButton =
+  document.getElementById("menu-button");
     const menuButton =
       document.getElementById("menu-button");
 
@@ -2017,67 +2098,109 @@ const stories = [
       return searchableText.includes(searchTerm);
     }
 
-    function renderStories() {
-      const searchTerm =
-        normalizeValue(searchInput.value);
+  function renderStories() {
+  const searchTerm =
+    normalizeValue(searchInput.value);
 
-      const selectedPublication =
-        publicationFilter.value;
+  const selectedPublication =
+    publicationFilter.value;
 
-      const selectedCategory =
-        categoryFilter.value;
+  const selectedCategory =
+    categoryFilter.value;
 
-      const filteredStories =
-        stories.filter((story) => {
-          const matchesSearch =
-            storyMatchesSearch(
-              story,
-              searchTerm
-            );
-
-          const matchesPublication =
-            selectedPublication === "all" ||
-            story.publication === selectedPublication;
-
-          const matchesCategory =
-            selectedCategory === "all" ||
-            story.category === selectedCategory;
-
-          return (
-            matchesSearch &&
-            matchesPublication &&
-            matchesCategory
+  const filteredStories =
+    stories
+      .filter((story) => {
+        const matchesSearch =
+          storyMatchesSearch(
+            story,
+            searchTerm
           );
-        });
 
-      storyGrid.innerHTML = "";
+        const matchesPublication =
+          selectedPublication === "all" ||
+          story.publication === selectedPublication;
 
-      if (!filteredStories.length) {
-        storyGrid.innerHTML = `
-          <div class="empty-state">
-            <h3>No stories found.</h3>
+        const matchesCategory =
+          selectedCategory === "all" ||
+          story.category === selectedCategory;
 
-            <p>
-              Try another keyword or clear the filters.
-            </p>
-          </div>
-        `;
-      } else {
-        filteredStories.forEach((story) => {
-          storyGrid.appendChild(
-            createStoryCard(story)
-          );
-        });
-      }
+        return (
+          matchesSearch &&
+          matchesPublication &&
+          matchesCategory
+        );
+      })
+      .sort((a, b) => {
+        return new Date(b.date) - new Date(a.date);
+      });
 
-      const storyWord =
-        filteredStories.length === 1
-          ? "story"
-          : "stories";
+  const totalPages =
+    Math.max(
+      1,
+      Math.ceil(
+        filteredStories.length /
+        STORIES_PER_PAGE
+      )
+    );
 
-      resultCount.textContent =
-        `Showing ${filteredStories.length} ${storyWord}`;
-    }
+  if (currentStoryPage > totalPages) {
+    currentStoryPage = totalPages;
+  }
+
+  const startingIndex =
+    (currentStoryPage - 1) *
+    STORIES_PER_PAGE;
+
+  const storiesForCurrentPage =
+    filteredStories.slice(
+      startingIndex,
+      startingIndex + STORIES_PER_PAGE
+    );
+
+  storyGrid.innerHTML = "";
+
+  if (!filteredStories.length) {
+    storyGrid.innerHTML = `
+      <div class="empty-state">
+        <h3>No stories found.</h3>
+
+        <p>
+          Try another keyword or clear the filters.
+        </p>
+      </div>
+    `;
+
+    storyPagination.style.display =
+      "none";
+  } else {
+    storiesForCurrentPage.forEach((story) => {
+      storyGrid.appendChild(
+        createStoryCard(story)
+      );
+    });
+
+    storyPagination.style.display =
+      "flex";
+  }
+
+  const storyWord =
+    filteredStories.length === 1
+      ? "story"
+      : "stories";
+
+  resultCount.textContent =
+    `Showing ${filteredStories.length} ${storyWord}`;
+
+  storyPageStatus.textContent =
+    `Page ${currentStoryPage} of ${totalPages}`;
+
+  previousStoriesButton.disabled =
+    currentStoryPage === 1;
+
+  nextStoriesButton.disabled =
+    currentStoryPage === totalPages;
+}
 
     function clearFilters() {
       searchInput.value =
@@ -2128,26 +2251,52 @@ const stories = [
       );
     }
 
-    searchInput.addEventListener(
-      "input",
-      renderStories
-    );
+ searchInput.addEventListener(
+  "input",
+  () => {
+    currentStoryPage = 1;
+    renderStories();
+  }
+);
 
-    publicationFilter.addEventListener(
-      "change",
-      renderStories
-    );
+publicationFilter.addEventListener(
+  "change",
+  () => {
+    currentStoryPage = 1;
+    renderStories();
+  }
+);
 
-    categoryFilter.addEventListener(
-      "change",
-      renderStories
-    );
+categoryFilter.addEventListener(
+  "change",
+  () => {
+    currentStoryPage = 1;
+    renderStories();
+  }
+);
 
     clearFiltersButton.addEventListener(
       "click",
       clearFilters
     );
 
+    previousStoriesButton.addEventListener(
+  "click",
+  () => {
+    if (currentStoryPage > 1) {
+      currentStoryPage -= 1;
+      renderStories();
+    }
+  }
+);
+
+nextStoriesButton.addEventListener(
+  "click",
+  () => {
+    currentStoryPage += 1;
+    renderStories();
+  }
+);
     menuButton.addEventListener(
       "click",
       toggleMobileMenu
