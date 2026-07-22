@@ -1940,7 +1940,37 @@ article.innerHTML = `
   </div>
 
   <div class="story-card-content">
-    ...
+    <p class="story-card-publication">
+      ${escapeHTML(story.publication || "Published work")}
+      ·
+      ${escapeHTML(story.type || "Story")}
+    </p>
+
+    <h3>
+      ${escapeHTML(story.title || "Untitled story")}
+    </h3>
+
+    <p class="story-card-description">
+      ${escapeHTML(
+        story.description ||
+        "View this story in its original publication."
+      )}
+    </p>
+
+    <div class="story-card-footer">
+      <span class="story-date">
+        ${escapeHTML(story.date || story.year || "")}
+      </span>
+
+      <a
+        class="story-card-link"
+        href="${escapeHTML(story.link || "#")}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read story →
+      </a>
+    </div>
   </div>
 `;
 
